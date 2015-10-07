@@ -1,0 +1,78 @@
+﻿@model MvcDemo.Models.STUDENT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>STUDENT</legend>
+
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.STUDENT_ID)</th>
+            <td>@Html.DisplayFor(model => model.STUDENT_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.AVAILABLE_COURSE.AVAIL_COURSE_ID)</th>
+            <td>@Html.DisplayFor(model => model.AVAILABLE_COURSE.AVAIL_COURSE_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ETHINICITY_TABLE.ETHINICITY)</th>
+            <td>@Html.DisplayFor(model => model.ETHINICITY_TABLE.ETHINICITY)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DETAILED_ETHINICITY_TABLE.DETAILED_ETHINICITY)</th>
+            <td>@Html.DisplayFor(model => model.DETAILED_ETHINICITY_TABLE.DETAILED_ETHINICITY)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.STUDENT_FNAME)</th>
+            <td>@Html.DisplayFor(model => model.STUDENT_FNAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.STUDENT_LNAME)</th>
+            <td>@Html.DisplayFor(model => model.STUDENT_LNAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.GENDER)</th>
+            <td>@Html.DisplayFor(model => model.GENDER)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DOB)</th>
+            <td>@Html.DisplayFor(model => model.DOB)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ADDRESS)</th>
+            <td>@Html.DisplayFor(model => model.ADDRESS)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ACCOMODATION)</th>
+            <td>@Html.DisplayFor(model => model.ACCOMODATION)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PHONE)</th>
+            <td>@Html.DisplayFor(model => model.PHONE)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.MOBILE)</th>
+            <td>@Html.DisplayFor(model => model.MOBILE)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.EMAIL)</th>
+            <td>@Html.DisplayFor(model => model.EMAIL)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.MARITAL_STATUS)</th>
+            <td>@Html.DisplayFor(model => model.MARITAL_STATUS)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CONTACT)</th>
+            <td>@Html.DisplayFor(model => model.CONTACT)</td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.STUDENT_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

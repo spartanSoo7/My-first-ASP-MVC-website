@@ -1,0 +1,36 @@
+﻿@model MvcDemo.Models.DETAILED_ETHINICITY_TABLE
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DETAILED_ETHINICITY_TABLE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DETAILED_ETHINICITY_ID)</th>
+            <td>@Html.DisplayFor(model => model.DETAILED_ETHINICITY_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DETAILED_ETHINICITY)</th>
+            <td>@Html.DisplayFor(model => model.DETAILED_ETHINICITY)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ETHINICITY_TABLE.ETHINICITY)</th>
+            <td>@Html.DisplayFor(model => model.ETHINICITY_TABLE.ETHINICITY)</td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.DETAILED_ETHINICITY_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

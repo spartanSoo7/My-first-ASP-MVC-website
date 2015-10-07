@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MvcDemo.Models.FACULTY_TABLE>
+
+@{
+    ViewBag.Title = "Faculties";
+}
+
+<h2>Faculties</h2>
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h3 style="color: red;">@TempData["notice"]</h3>
+<p>
+    @Html.ActionLink("Back", "adminOnly", "Home") |
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FACULTY_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FACULTY_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FACULTY_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FACULTY_NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.FACULTY_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.FACULTY_ID }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.FACULTY_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MvcDemo.Models.VOUCHER_TABLE>
+
+@{
+    ViewBag.Title = "StuGrant";
+}
+
+<h2>The Students Grants</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REF_NUM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VOUCHER_TYPE_TABLLE.VOUCHER_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATE_OF_ISSUE)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REF_NUM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VOUCHER_TYPE_TABLLE.VOUCHER_TYPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATE_OF_ISSUE)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { controller = "Voucher", id = item.REF_NUM }, null) |
+                @Html.ActionLink("Details", "Details", new { controller = "Voucher", id = item.REF_NUM }, null) |
+                @Html.ActionLink("Delete", "Delete", new { controller = "Voucher", id = item.REF_NUM }, null) |
+                @Html.ActionLink("New", "Create", new { controller = "Voucher", id = item.STUDENT_ID }, null)
+            </td>
+        </tr>
+    }
+
+
+</table>

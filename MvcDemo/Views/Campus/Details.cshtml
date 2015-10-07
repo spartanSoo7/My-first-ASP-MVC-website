@@ -1,0 +1,36 @@
+﻿@model MvcDemo.Models.CAMPUS_TABLE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CAMPUS_TABLE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CAMPUS_ID)</th>
+            <td>@Html.DisplayFor(model => model.CAMPUS_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CAMPUS_NAME)</th>
+            <td>@Html.DisplayFor(model => model.CAMPUS_NAME)</td>
+        </tr>
+    </table>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.CAMPUS_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

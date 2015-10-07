@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MvcDemo.Models.VOUCHER_TABLE>
+@{
+    ViewBag.Title = "Gender report";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+
+<h2>Vouchers Issued by gender</h2>
+<p>
+    @Html.ActionLink("Back", "Index")
+</p>
+
+@{int Total = 0;}
+
+@{ if (Total > 50)
+ {
+    <h3 style="color: red;">Warning: There is more than 50 vouchers shown</h3>
+ }
+}
+@if (TempData["inputFail"] != null)
+{
+    <h3 style="color: red;">@TempData["dateFail"]</h3>
+}
+
+<!--User input-->
+@using (Html.BeginForm())
+{
+    <p>        
+        <select style="border: 1px solid #e2e2e2; background: #fff; color: #333; font-size: 1.2em; margin: 5px 0 6px 0;  padding: 5px;  width: 300px;"  id="gender" name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+        </select>
+
+        <input type="submit" value="Go" />
+    </p>
+}
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT.STUDENT_FNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT.GENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VOUCHER_TYPE_TABLLE.VOUCHER_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REF_NUM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATE_OF_ISSUE)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT.STUDENT_FNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT.GENDER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VOUCHER_TYPE_TABLLE.VOUCHER_TYPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REF_NUM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATE_OF_ISSUE)
+            </td>
+        </tr>
+        Total++;
+    }
+
+</table>
+<p>Total number of grants: @Total</p>

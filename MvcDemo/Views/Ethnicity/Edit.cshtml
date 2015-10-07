@@ -1,0 +1,47 @@
+﻿@model MvcDemo.Models.ETHINICITY_TABLE
+
+@{
+    ViewBag.Title = "Edit";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ETHINICITY_TABLE</legend>
+
+        <table>
+            <tr>
+                <th>@Html.HiddenFor(model => model.ETHINICITY_ID)</th>
+                <td>@Html.HiddenFor(model => model.ETHINICITY_ID)</td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.ETHINICITY)</th>
+                <td>@Html.EditorFor(model => model.ETHINICITY)
+                @Html.ValidationMessageFor(model => model.ETHINICITY)</td>
+            </tr>
+        </table>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

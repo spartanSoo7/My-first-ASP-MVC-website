@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AVAILABLE_COURSE">
+          <Key>
+            <PropertyRef Name="AVAIL_COURSE_ID" />
+          </Key>
+          <Property Name="CAMPUS_ID" Type="int" Nullable="false" />
+          <Property Name="FACULTY_ID" Type="int" Nullable="false" />
+          <Property Name="COURSE_ID" Type="int" Nullable="false" />
+          <Property Name="AVAIL_COURSE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAMPUS_TABLE">
+          <Key>
+            <PropertyRef Name="CAMPUS_ID" />
+          </Key>
+          <Property Name="CAMPUS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAMPUS_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COURSE_TABLE">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+          </Key>
+          <Property Name="COURSE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_NAME" Type="varchar(max)" Nullable="false" />
+          <Property Name="FACULTY_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETAILED_ETHINICITY_TABLE">
+          <Key>
+            <PropertyRef Name="DETAILED_ETHINICITY_ID" />
+          </Key>
+          <Property Name="DETAILED_ETHINICITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DETAILED_ETHINICITY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ETHINICITY_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETHINICITY_TABLE">
+          <Key>
+            <PropertyRef Name="ETHINICITY_ID" />
+          </Key>
+          <Property Name="ETHINICITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ETHINICITY" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FACULTY_TABLE">
+          <Key>
+            <PropertyRef Name="FACULTY_ID" />
+          </Key>
+          <Property Name="FACULTY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACULTY_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUDENTS">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AVAIL_COURSE_ID" Type="int" Nullable="false" />
+          <Property Name="ETHINICITY_ID" Type="int" />
+          <Property Name="DETAILED_ETHINICITY_ID" Type="int" />
+          <Property Name="STUDENT_FNAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="STUDENT_LNAME" Type="varchar" MaxLength="30" />
+          <Property Name="GENDER" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DOB" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="30" />
+          <Property Name="ACCOMODATION" Type="varchar" MaxLength="30" />
+          <Property Name="PHONE" Type="varchar" MaxLength="30" />
+          <Property Name="MOBILE" Type="varchar" MaxLength="30" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="35" />
+          <Property Name="MARITAL_STATUS" Type="varchar" MaxLength="30" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="EmailId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="VOUCHER_TABLE">
+          <Key>
+            <PropertyRef Name="REF_NUM" />
+          </Key>
+          <Property Name="REF_NUM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="VOUCHER_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="VOUCHER_VALUE" Type="float" />
+          <Property Name="KOHA_FUNDS" Type="float" />
+          <Property Name="ADVICE_DESCR" Type="varchar" MaxLength="50" />
+          <Property Name="DATE_OF_ISSUE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VOUCHER_TYPE_TABLLE">
+          <Key>
+            <PropertyRef Name="VOUCHER_TYPE_ID" />
+          </Key>
+          <Property Name="VOUCHER_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VOUCHER_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="VOUCHER_SPECS" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProviderUserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="AVAILABLE_COURSE_TABLE_STUDENTS_FK1">
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="1" />
+          <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AVAILABLE_COURSE">
+              <PropertyRef Name="AVAIL_COURSE_ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="AVAIL_COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+          <End Role="CAMPUS_TABLE" Type="Self.CAMPUS_TABLE" Multiplicity="1" />
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPUS_TABLE">
+              <PropertyRef Name="CAMPUS_ID" />
+            </Principal>
+            <Dependent Role="AVAILABLE_COURSE">
+              <PropertyRef Name="CAMPUS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+          <End Role="COURSE_TABLE" Type="Self.COURSE_TABLE" Multiplicity="1" />
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE_TABLE">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="AVAILABLE_COURSE">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETAILED_ETHINICITY_TABLE_STUDENTS_FK1">
+          <End Role="DETAILED_ETHINICITY_TABLE" Type="Self.DETAILED_ETHINICITY_TABLE" Multiplicity="0..1" />
+          <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DETAILED_ETHINICITY_TABLE">
+              <PropertyRef Name="DETAILED_ETHINICITY_ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="DETAILED_ETHINICITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1">
+          <End Role="ETHINICITY_TABLE" Type="Self.ETHINICITY_TABLE" Multiplicity="1" />
+          <End Role="DETAILED_ETHINICITY_TABLE" Type="Self.DETAILED_ETHINICITY_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETHINICITY_TABLE">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Principal>
+            <Dependent Role="DETAILED_ETHINICITY_TABLE">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ETHINICITY_TABLE_STUDENTS_FK1">
+          <End Role="ETHINICITY_TABLE" Type="Self.ETHINICITY_TABLE" Multiplicity="0..1" />
+          <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETHINICITY_TABLE">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1">
+          <End Role="FACULTY_TABLE" Type="Self.FACULTY_TABLE" Multiplicity="1" />
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY_TABLE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Principal>
+            <Dependent Role="AVAILABLE_COURSE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACULTY_TABLE_COURSE_TABLE_FK1">
+          <End Role="FACULTY_TABLE" Type="Self.FACULTY_TABLE" Multiplicity="1" />
+          <End Role="COURSE_TABLE" Type="Self.COURSE_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY_TABLE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Principal>
+            <Dependent Role="COURSE_TABLE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STUDENTS_VOUCHER_TABLE_FK1">
+          <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="1" />
+          <End Role="VOUCHER_TABLE" Type="Self.VOUCHER_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENTS">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="VOUCHER_TABLE">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1">
+          <End Role="VOUCHER_TYPE_TABLLE" Type="Self.VOUCHER_TYPE_TABLLE" Multiplicity="1" />
+          <End Role="VOUCHER_TABLE" Type="Self.VOUCHER_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VOUCHER_TYPE_TABLLE">
+              <PropertyRef Name="VOUCHER_TYPE_ID" />
+            </Principal>
+            <Dependent Role="VOUCHER_TABLE">
+              <PropertyRef Name="VOUCHER_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AVAILABLE_COURSE" EntityType="Self.AVAILABLE_COURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAMPUS_TABLE" EntityType="Self.CAMPUS_TABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COURSE_TABLE" EntityType="Self.COURSE_TABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETAILED_ETHINICITY_TABLE" EntityType="Self.DETAILED_ETHINICITY_TABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ETHINICITY_TABLE" EntityType="Self.ETHINICITY_TABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACULTY_TABLE" EntityType="Self.FACULTY_TABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENTS" EntityType="Self.STUDENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VOUCHER_TABLE" EntityType="Self.VOUCHER_TABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VOUCHER_TYPE_TABLLE" EntityType="Self.VOUCHER_TYPE_TABLLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="AVAILABLE_COURSE_TABLE_STUDENTS_FK1" Association="Self.AVAILABLE_COURSE_TABLE_STUDENTS_FK1">
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1" Association="Self.CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+            <End Role="CAMPUS_TABLE" EntitySet="CAMPUS_TABLE" />
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1" Association="Self.COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+            <End Role="COURSE_TABLE" EntitySet="COURSE_TABLE" />
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="DETAILED_ETHINICITY_TABLE_STUDENTS_FK1" Association="Self.DETAILED_ETHINICITY_TABLE_STUDENTS_FK1">
+            <End Role="DETAILED_ETHINICITY_TABLE" EntitySet="DETAILED_ETHINICITY_TABLE" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1" Association="Self.ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1">
+            <End Role="ETHINICITY_TABLE" EntitySet="ETHINICITY_TABLE" />
+            <End Role="DETAILED_ETHINICITY_TABLE" EntitySet="DETAILED_ETHINICITY_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="ETHINICITY_TABLE_STUDENTS_FK1" Association="Self.ETHINICITY_TABLE_STUDENTS_FK1">
+            <End Role="ETHINICITY_TABLE" EntitySet="ETHINICITY_TABLE" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1" Association="Self.FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1">
+            <End Role="FACULTY_TABLE" EntitySet="FACULTY_TABLE" />
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FACULTY_TABLE_COURSE_TABLE_FK1" Association="Self.FACULTY_TABLE_COURSE_TABLE_FK1">
+            <End Role="FACULTY_TABLE" EntitySet="FACULTY_TABLE" />
+            <End Role="COURSE_TABLE" EntitySet="COURSE_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="Self.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="STUDENTS_VOUCHER_TABLE_FK1" Association="Self.STUDENTS_VOUCHER_TABLE_FK1">
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+            <End Role="VOUCHER_TABLE" EntitySet="VOUCHER_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1" Association="Self.VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1">
+            <End Role="VOUCHER_TYPE_TABLLE" EntitySet="VOUCHER_TYPE_TABLLE" />
+            <End Role="VOUCHER_TABLE" EntitySet="VOUCHER_TABLE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AVAILABLE_COURSE">
+          <Key>
+            <PropertyRef Name="AVAIL_COURSE_ID" />
+          </Key>
+          <Property Name="CAMPUS_ID" Type="Int32" Nullable="false" />
+          <Property Name="FACULTY_ID" Type="Int32" Nullable="false" />
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="AVAIL_COURSE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="STUDENTS" Relationship="Self.AVAILABLE_COURSE_TABLE_STUDENTS_FK1" FromRole="AVAILABLE_COURSE" ToRole="STUDENTS" />
+          <NavigationProperty Name="CAMPUS_TABLE" Relationship="Self.CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1" FromRole="AVAILABLE_COURSE" ToRole="CAMPUS_TABLE" />
+          <NavigationProperty Name="COURSE_TABLE" Relationship="Self.COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1" FromRole="AVAILABLE_COURSE" ToRole="COURSE_TABLE" />
+          <NavigationProperty Name="FACULTY_TABLE" Relationship="Self.FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1" FromRole="AVAILABLE_COURSE" ToRole="FACULTY_TABLE" />
+        </EntityType>
+        <EntityType Name="CAMPUS_TABLE">
+          <Key>
+            <PropertyRef Name="CAMPUS_ID" />
+          </Key>
+          <Property Name="CAMPUS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAMPUS_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AVAILABLE_COURSE" Relationship="Self.CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1" FromRole="CAMPUS_TABLE" ToRole="AVAILABLE_COURSE" />
+        </EntityType>
+        <EntityType Name="COURSE_TABLE">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+          </Key>
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FACULTY_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AVAILABLE_COURSE" Relationship="Self.COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1" FromRole="COURSE_TABLE" ToRole="AVAILABLE_COURSE" />
+          <NavigationProperty Name="FACULTY_TABLE" Relationship="Self.FACULTY_TABLE_COURSE_TABLE_FK1" FromRole="COURSE_TABLE" ToRole="FACULTY_TABLE" />
+        </EntityType>
+        <EntityType Name="DETAILED_ETHINICITY_TABLE">
+          <Key>
+            <PropertyRef Name="DETAILED_ETHINICITY_ID" />
+          </Key>
+          <Property Name="DETAILED_ETHINICITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DETAILED_ETHINICITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ETHINICITY_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STUDENTS" Relationship="Self.DETAILED_ETHINICITY_TABLE_STUDENTS_FK1" FromRole="DETAILED_ETHINICITY_TABLE" ToRole="STUDENTS" />
+          <NavigationProperty Name="ETHINICITY_TABLE" Relationship="Self.ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1" FromRole="DETAILED_ETHINICITY_TABLE" ToRole="ETHINICITY_TABLE" />
+        </EntityType>
+        <EntityType Name="ETHINICITY_TABLE">
+          <Key>
+            <PropertyRef Name="ETHINICITY_ID" />
+          </Key>
+          <Property Name="ETHINICITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ETHINICITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DETAILED_ETHINICITY_TABLE" Relationship="Self.ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1" FromRole="ETHINICITY_TABLE" ToRole="DETAILED_ETHINICITY_TABLE" />
+          <NavigationProperty Name="STUDENTS" Relationship="Self.ETHINICITY_TABLE_STUDENTS_FK1" FromRole="ETHINICITY_TABLE" ToRole="STUDENTS" />
+        </EntityType>
+        <EntityType Name="FACULTY_TABLE">
+          <Key>
+            <PropertyRef Name="FACULTY_ID" />
+          </Key>
+          <Property Name="FACULTY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACULTY_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AVAILABLE_COURSE" Relationship="Self.FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1" FromRole="FACULTY_TABLE" ToRole="AVAILABLE_COURSE" />
+          <NavigationProperty Name="COURSE_TABLE" Relationship="Self.FACULTY_TABLE_COURSE_TABLE_FK1" FromRole="FACULTY_TABLE" ToRole="COURSE_TABLE" />
+        </EntityType>
+        <EntityType Name="STUDENT">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AVAIL_COURSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ETHINICITY_ID" Type="Int32" />
+          <Property Name="DETAILED_ETHINICITY_ID" Type="Int32" />
+          <Property Name="STUDENT_FNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_LNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ACCOMODATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MOBILE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="MARITAL_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AVAILABLE_COURSE" Relationship="Self.AVAILABLE_COURSE_TABLE_STUDENTS_FK1" FromRole="STUDENTS" ToRole="AVAILABLE_COURSE" />
+          <NavigationProperty Name="DETAILED_ETHINICITY_TABLE" Relationship="Self.DETAILED_ETHINICITY_TABLE_STUDENTS_FK1" FromRole="STUDENTS" ToRole="DETAILED_ETHINICITY_TABLE" />
+          <NavigationProperty Name="ETHINICITY_TABLE" Relationship="Self.ETHINICITY_TABLE_STUDENTS_FK1" FromRole="STUDENTS" ToRole="ETHINICITY_TABLE" />
+          <NavigationProperty Name="VOUCHER_TABLE" Relationship="Self.STUDENTS_VOUCHER_TABLE_FK1" FromRole="STUDENTS" ToRole="VOUCHER_TABLE" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="webpages_Roles" Relationship="Self.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="VOUCHER_TABLE">
+          <Key>
+            <PropertyRef Name="REF_NUM" />
+          </Key>
+          <Property Name="REF_NUM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STUDENT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VOUCHER_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="VOUCHER_VALUE" Type="Double" />
+          <Property Name="KOHA_FUNDS" Type="Double" />
+          <Property Name="ADVICE_DESCR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATE_OF_ISSUE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="STUDENT" Relationship="Self.STUDENTS_VOUCHER_TABLE_FK1" FromRole="VOUCHER_TABLE" ToRole="STUDENTS" />
+          <NavigationProperty Name="VOUCHER_TYPE_TABLLE" Relationship="Self.VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1" FromRole="VOUCHER_TABLE" ToRole="VOUCHER_TYPE_TABLLE" />
+        </EntityType>
+        <EntityType Name="VOUCHER_TYPE_TABLLE">
+          <Key>
+            <PropertyRef Name="VOUCHER_TYPE_ID" />
+          </Key>
+          <Property Name="VOUCHER_TYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VOUCHER_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VOUCHER_SPECS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VOUCHER_TABLE" Relationship="Self.VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1" FromRole="VOUCHER_TYPE_TABLLE" ToRole="VOUCHER_TABLE" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="AVAILABLE_COURSE_TABLE_STUDENTS_FK1">
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="1" />
+          <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AVAILABLE_COURSE">
+              <PropertyRef Name="AVAIL_COURSE_ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="AVAIL_COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+          <End Role="CAMPUS_TABLE" Type="Self.CAMPUS_TABLE" Multiplicity="1" />
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPUS_TABLE">
+              <PropertyRef Name="CAMPUS_ID" />
+            </Principal>
+            <Dependent Role="AVAILABLE_COURSE">
+              <PropertyRef Name="CAMPUS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+          <End Role="COURSE_TABLE" Type="Self.COURSE_TABLE" Multiplicity="1" />
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE_TABLE">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="AVAILABLE_COURSE">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1">
+          <End Role="FACULTY_TABLE" Type="Self.FACULTY_TABLE" Multiplicity="1" />
+          <End Role="AVAILABLE_COURSE" Type="Self.AVAILABLE_COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY_TABLE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Principal>
+            <Dependent Role="AVAILABLE_COURSE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACULTY_TABLE_COURSE_TABLE_FK1">
+          <End Role="FACULTY_TABLE" Type="Self.FACULTY_TABLE" Multiplicity="1" />
+          <End Role="COURSE_TABLE" Type="Self.COURSE_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY_TABLE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Principal>
+            <Dependent Role="COURSE_TABLE">
+              <PropertyRef Name="FACULTY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETAILED_ETHINICITY_TABLE_STUDENTS_FK1">
+          <End Role="DETAILED_ETHINICITY_TABLE" Type="Self.DETAILED_ETHINICITY_TABLE" Multiplicity="0..1" />
+          <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DETAILED_ETHINICITY_TABLE">
+              <PropertyRef Name="DETAILED_ETHINICITY_ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="DETAILED_ETHINICITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1">
+          <End Role="ETHINICITY_TABLE" Type="Self.ETHINICITY_TABLE" Multiplicity="1" />
+          <End Role="DETAILED_ETHINICITY_TABLE" Type="Self.DETAILED_ETHINICITY_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETHINICITY_TABLE">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Principal>
+            <Dependent Role="DETAILED_ETHINICITY_TABLE">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ETHINICITY_TABLE_STUDENTS_FK1">
+          <End Role="ETHINICITY_TABLE" Type="Self.ETHINICITY_TABLE" Multiplicity="0..1" />
+          <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETHINICITY_TABLE">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="ETHINICITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STUDENTS_VOUCHER_TABLE_FK1">
+          <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="1" />
+          <End Role="VOUCHER_TABLE" Type="Self.VOUCHER_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENTS">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="VOUCHER_TABLE">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1">
+          <End Role="VOUCHER_TYPE_TABLLE" Type="Self.VOUCHER_TYPE_TABLLE" Multiplicity="1" />
+          <End Role="VOUCHER_TABLE" Type="Self.VOUCHER_TABLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VOUCHER_TYPE_TABLLE">
+              <PropertyRef Name="VOUCHER_TYPE_ID" />
+            </Principal>
+            <Dependent Role="VOUCHER_TABLE">
+              <PropertyRef Name="VOUCHER_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SFS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AVAILABLE_COURSE" EntityType="Self.AVAILABLE_COURSE" />
+          <EntitySet Name="CAMPUS_TABLE" EntityType="Self.CAMPUS_TABLE" />
+          <EntitySet Name="COURSE_TABLE" EntityType="Self.COURSE_TABLE" />
+          <EntitySet Name="DETAILED_ETHINICITY_TABLE" EntityType="Self.DETAILED_ETHINICITY_TABLE" />
+          <EntitySet Name="ETHINICITY_TABLE" EntityType="Self.ETHINICITY_TABLE" />
+          <EntitySet Name="FACULTY_TABLE" EntityType="Self.FACULTY_TABLE" />
+          <EntitySet Name="STUDENTS" EntityType="Self.STUDENT" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+          <EntitySet Name="VOUCHER_TABLE" EntityType="Self.VOUCHER_TABLE" />
+          <EntitySet Name="VOUCHER_TYPE_TABLLE" EntityType="Self.VOUCHER_TYPE_TABLLE" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" />
+          <AssociationSet Name="AVAILABLE_COURSE_TABLE_STUDENTS_FK1" Association="Self.AVAILABLE_COURSE_TABLE_STUDENTS_FK1">
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1" Association="Self.CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+            <End Role="CAMPUS_TABLE" EntitySet="CAMPUS_TABLE" />
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1" Association="Self.COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1">
+            <End Role="COURSE_TABLE" EntitySet="COURSE_TABLE" />
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1" Association="Self.FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1">
+            <End Role="FACULTY_TABLE" EntitySet="FACULTY_TABLE" />
+            <End Role="AVAILABLE_COURSE" EntitySet="AVAILABLE_COURSE" />
+          </AssociationSet>
+          <AssociationSet Name="FACULTY_TABLE_COURSE_TABLE_FK1" Association="Self.FACULTY_TABLE_COURSE_TABLE_FK1">
+            <End Role="FACULTY_TABLE" EntitySet="FACULTY_TABLE" />
+            <End Role="COURSE_TABLE" EntitySet="COURSE_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="DETAILED_ETHINICITY_TABLE_STUDENTS_FK1" Association="Self.DETAILED_ETHINICITY_TABLE_STUDENTS_FK1">
+            <End Role="DETAILED_ETHINICITY_TABLE" EntitySet="DETAILED_ETHINICITY_TABLE" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1" Association="Self.ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1">
+            <End Role="ETHINICITY_TABLE" EntitySet="ETHINICITY_TABLE" />
+            <End Role="DETAILED_ETHINICITY_TABLE" EntitySet="DETAILED_ETHINICITY_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="ETHINICITY_TABLE_STUDENTS_FK1" Association="Self.ETHINICITY_TABLE_STUDENTS_FK1">
+            <End Role="ETHINICITY_TABLE" EntitySet="ETHINICITY_TABLE" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="STUDENTS_VOUCHER_TABLE_FK1" Association="Self.STUDENTS_VOUCHER_TABLE_FK1">
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+            <End Role="VOUCHER_TABLE" EntitySet="VOUCHER_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1" Association="Self.VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1">
+            <End Role="VOUCHER_TYPE_TABLLE" EntitySet="VOUCHER_TYPE_TABLLE" />
+            <End Role="VOUCHER_TABLE" EntitySet="VOUCHER_TABLE" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="Self.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SFS">
+          <EntitySetMapping Name="AVAILABLE_COURSE">
+            <EntityTypeMapping TypeName="Model.AVAILABLE_COURSE">
+              <MappingFragment StoreEntitySet="AVAILABLE_COURSE">
+                <ScalarProperty Name="CAMPUS_ID" ColumnName="CAMPUS_ID" />
+                <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="AVAIL_COURSE_ID" ColumnName="AVAIL_COURSE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAMPUS_TABLE">
+            <EntityTypeMapping TypeName="Model.CAMPUS_TABLE">
+              <MappingFragment StoreEntitySet="CAMPUS_TABLE">
+                <ScalarProperty Name="CAMPUS_ID" ColumnName="CAMPUS_ID" />
+                <ScalarProperty Name="CAMPUS_NAME" ColumnName="CAMPUS_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COURSE_TABLE">
+            <EntityTypeMapping TypeName="Model.COURSE_TABLE">
+              <MappingFragment StoreEntitySet="COURSE_TABLE">
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="COURSE_NAME" ColumnName="COURSE_NAME" />
+                <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETAILED_ETHINICITY_TABLE">
+            <EntityTypeMapping TypeName="Model.DETAILED_ETHINICITY_TABLE">
+              <MappingFragment StoreEntitySet="DETAILED_ETHINICITY_TABLE">
+                <ScalarProperty Name="DETAILED_ETHINICITY_ID" ColumnName="DETAILED_ETHINICITY_ID" />
+                <ScalarProperty Name="DETAILED_ETHINICITY" ColumnName="DETAILED_ETHINICITY" />
+                <ScalarProperty Name="ETHINICITY_ID" ColumnName="ETHINICITY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETHINICITY_TABLE">
+            <EntityTypeMapping TypeName="Model.ETHINICITY_TABLE">
+              <MappingFragment StoreEntitySet="ETHINICITY_TABLE">
+                <ScalarProperty Name="ETHINICITY_ID" ColumnName="ETHINICITY_ID" />
+                <ScalarProperty Name="ETHINICITY" ColumnName="ETHINICITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACULTY_TABLE">
+            <EntityTypeMapping TypeName="Model.FACULTY_TABLE">
+              <MappingFragment StoreEntitySet="FACULTY_TABLE">
+                <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+                <ScalarProperty Name="FACULTY_NAME" ColumnName="FACULTY_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENTS">
+            <EntityTypeMapping TypeName="Model.STUDENT">
+              <MappingFragment StoreEntitySet="STUDENTS">
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="AVAIL_COURSE_ID" ColumnName="AVAIL_COURSE_ID" />
+                <ScalarProperty Name="ETHINICITY_ID" ColumnName="ETHINICITY_ID" />
+                <ScalarProperty Name="DETAILED_ETHINICITY_ID" ColumnName="DETAILED_ETHINICITY_ID" />
+                <ScalarProperty Name="STUDENT_FNAME" ColumnName="STUDENT_FNAME" />
+                <ScalarProperty Name="STUDENT_LNAME" ColumnName="STUDENT_LNAME" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="ACCOMODATION" ColumnName="ACCOMODATION" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MARITAL_STATUS" ColumnName="MARITAL_STATUS" />
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="Model.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VOUCHER_TABLE">
+            <EntityTypeMapping TypeName="Model.VOUCHER_TABLE">
+              <MappingFragment StoreEntitySet="VOUCHER_TABLE">
+                <ScalarProperty Name="REF_NUM" ColumnName="REF_NUM" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="VOUCHER_TYPE_ID" ColumnName="VOUCHER_TYPE_ID" />
+                <ScalarProperty Name="VOUCHER_VALUE" ColumnName="VOUCHER_VALUE" />
+                <ScalarProperty Name="KOHA_FUNDS" ColumnName="KOHA_FUNDS" />
+                <ScalarProperty Name="ADVICE_DESCR" ColumnName="ADVICE_DESCR" />
+                <ScalarProperty Name="DATE_OF_ISSUE" ColumnName="DATE_OF_ISSUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VOUCHER_TYPE_TABLLE">
+            <EntityTypeMapping TypeName="Model.VOUCHER_TYPE_TABLLE">
+              <MappingFragment StoreEntitySet="VOUCHER_TYPE_TABLLE">
+                <ScalarProperty Name="VOUCHER_TYPE_ID" ColumnName="VOUCHER_TYPE_ID" />
+                <ScalarProperty Name="VOUCHER_TYPE" ColumnName="VOUCHER_TYPE" />
+                <ScalarProperty Name="VOUCHER_SPECS" ColumnName="VOUCHER_SPECS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="Model.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="Model.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="Model.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="Model.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

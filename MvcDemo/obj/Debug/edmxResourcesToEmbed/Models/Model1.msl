@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SFS">
+    <EntitySetMapping Name="AVAILABLE_COURSE">
+      <EntityTypeMapping TypeName="Model.AVAILABLE_COURSE">
+        <MappingFragment StoreEntitySet="AVAILABLE_COURSE">
+          <ScalarProperty Name="CAMPUS_ID" ColumnName="CAMPUS_ID" />
+          <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+          <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+          <ScalarProperty Name="AVAIL_COURSE_ID" ColumnName="AVAIL_COURSE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMPUS_TABLE">
+      <EntityTypeMapping TypeName="Model.CAMPUS_TABLE">
+        <MappingFragment StoreEntitySet="CAMPUS_TABLE">
+          <ScalarProperty Name="CAMPUS_ID" ColumnName="CAMPUS_ID" />
+          <ScalarProperty Name="CAMPUS_NAME" ColumnName="CAMPUS_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COURSE_TABLE">
+      <EntityTypeMapping TypeName="Model.COURSE_TABLE">
+        <MappingFragment StoreEntitySet="COURSE_TABLE">
+          <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+          <ScalarProperty Name="COURSE_NAME" ColumnName="COURSE_NAME" />
+          <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETAILED_ETHINICITY_TABLE">
+      <EntityTypeMapping TypeName="Model.DETAILED_ETHINICITY_TABLE">
+        <MappingFragment StoreEntitySet="DETAILED_ETHINICITY_TABLE">
+          <ScalarProperty Name="DETAILED_ETHINICITY_ID" ColumnName="DETAILED_ETHINICITY_ID" />
+          <ScalarProperty Name="DETAILED_ETHINICITY" ColumnName="DETAILED_ETHINICITY" />
+          <ScalarProperty Name="ETHINICITY_ID" ColumnName="ETHINICITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ETHINICITY_TABLE">
+      <EntityTypeMapping TypeName="Model.ETHINICITY_TABLE">
+        <MappingFragment StoreEntitySet="ETHINICITY_TABLE">
+          <ScalarProperty Name="ETHINICITY_ID" ColumnName="ETHINICITY_ID" />
+          <ScalarProperty Name="ETHINICITY" ColumnName="ETHINICITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACULTY_TABLE">
+      <EntityTypeMapping TypeName="Model.FACULTY_TABLE">
+        <MappingFragment StoreEntitySet="FACULTY_TABLE">
+          <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+          <ScalarProperty Name="FACULTY_NAME" ColumnName="FACULTY_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENTS">
+      <EntityTypeMapping TypeName="Model.STUDENT">
+        <MappingFragment StoreEntitySet="STUDENTS">
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="AVAIL_COURSE_ID" ColumnName="AVAIL_COURSE_ID" />
+          <ScalarProperty Name="ETHINICITY_ID" ColumnName="ETHINICITY_ID" />
+          <ScalarProperty Name="DETAILED_ETHINICITY_ID" ColumnName="DETAILED_ETHINICITY_ID" />
+          <ScalarProperty Name="STUDENT_FNAME" ColumnName="STUDENT_FNAME" />
+          <ScalarProperty Name="STUDENT_LNAME" ColumnName="STUDENT_LNAME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="ACCOMODATION" ColumnName="ACCOMODATION" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MARITAL_STATUS" ColumnName="MARITAL_STATUS" />
+          <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="Model.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOUCHER_TABLE">
+      <EntityTypeMapping TypeName="Model.VOUCHER_TABLE">
+        <MappingFragment StoreEntitySet="VOUCHER_TABLE">
+          <ScalarProperty Name="REF_NUM" ColumnName="REF_NUM" />
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="VOUCHER_TYPE_ID" ColumnName="VOUCHER_TYPE_ID" />
+          <ScalarProperty Name="VOUCHER_VALUE" ColumnName="VOUCHER_VALUE" />
+          <ScalarProperty Name="KOHA_FUNDS" ColumnName="KOHA_FUNDS" />
+          <ScalarProperty Name="ADVICE_DESCR" ColumnName="ADVICE_DESCR" />
+          <ScalarProperty Name="DATE_OF_ISSUE" ColumnName="DATE_OF_ISSUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOUCHER_TYPE_TABLLE">
+      <EntityTypeMapping TypeName="Model.VOUCHER_TYPE_TABLLE">
+        <MappingFragment StoreEntitySet="VOUCHER_TYPE_TABLLE">
+          <ScalarProperty Name="VOUCHER_TYPE_ID" ColumnName="VOUCHER_TYPE_ID" />
+          <ScalarProperty Name="VOUCHER_TYPE" ColumnName="VOUCHER_TYPE" />
+          <ScalarProperty Name="VOUCHER_SPECS" ColumnName="VOUCHER_SPECS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="Model.webpages_Membership">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="Model.webpages_OAuthMembership">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Roles">
+      <EntityTypeMapping TypeName="Model.webpages_Roles">
+        <MappingFragment StoreEntitySet="webpages_Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="Model.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+      <EndProperty Name="webpages_Roles">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="UserProfile">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

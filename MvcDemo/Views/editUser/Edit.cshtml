@@ -1,0 +1,75 @@
+﻿@model MvcDemo.Models.UserProfile
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserProfile</legend>
+
+        @Html.HiddenFor(model => model.UserId)
+        <table>
+
+
+        @if (Model.UserId == 1)
+        {
+
+        }
+        else
+        {
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.UserName)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </td>
+
+            </tr>
+        }
+
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.EmailId)
+            </th>
+            <td>
+                @Html.EditorFor(model => model.EmailId)
+                @Html.ValidationMessageFor(model => model.EmailId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Back to List", "Index")
+            </td>
+            <td>
+                <input type="submit" value="Save" />
+            </td>
+        </tr>
+            
+       </table>
+    </fieldset>
+}
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

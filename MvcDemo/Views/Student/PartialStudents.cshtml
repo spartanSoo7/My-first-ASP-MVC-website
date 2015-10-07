@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MvcDemo.Models.STUDENT>
+@using MvcDemo.Models
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVAILABLE_COURSE.COURSE_TABLE.COURSE_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_FNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_LNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AVAILABLE_COURSE.COURSE_TABLE.COURSE_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_FNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT_LNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.STUDENT_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.STUDENT_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.STUDENT_ID }) |
+                @Html.ActionLink("View Vouchers", "stuVoucher", "Voucher", new { id = item.STUDENT_ID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,41 @@
+﻿@model MvcDemo.Models.AVAILABLE_COURSE
+
+@{
+    ViewBag.Title = "Delete";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?<br />This may effect other tables</h3>
+<fieldset>
+    <legend>AVAILABLE_COURSE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CAMPUS_TABLE.CAMPUS_NAME)</th>
+            <td>@Html.DisplayFor(model => model.CAMPUS_TABLE.CAMPUS_NAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FACULTY_TABLE.FACULTY_NAME)</th>
+            <td>@Html.DisplayFor(model => model.FACULTY_TABLE.FACULTY_NAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.COURSE_TABLE.COURSE_NAME)</th>
+            <td>@Html.DisplayFor(model => model.COURSE_TABLE.COURSE_NAME)</td>
+        </tr>
+    </table>
+
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,51 @@
+﻿@model MvcDemo.Models.ETHINICITY_TABLE
+
+@{
+    ViewBag.Title = "Create";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ETHINICITY_TABLE</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.ETHINICITY_ID)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.ETHINICITY_ID)
+            @Html.ValidationMessageFor(model => model.ETHINICITY_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ETHINICITY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ETHINICITY)
+            @Html.ValidationMessageFor(model => model.ETHINICITY)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+
+}
+
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+            <br />
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+<h3>Student Finance Support recommends that the following order is used when issuing vouchers /grants:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>@Html.ActionLink("Register Students", "Index", "Students")</h5>
+        <p>First register the students who are to receive a grant/voucher
+        @Html.ActionLink("Register Students", "Index", "Students")
+        </p>
+    </li>
+
+    <li class="two">
+        <h5>@Html.ActionLink("Issue Students Grants/Vouchers", "Index", "Voucher")</h5>
+        <p>After the student has been registered, then a grant/voucher can be issued to the student
+        @Html.ActionLink("Issue Students Grants/ Vouchers", "Index", "Voucher")</p>
+    </li>
+
+    <li class="three">
+        <h5>@Html.ActionLink("View reports", "Index", "Reports")</h5>
+        <p>Finally once a student has been registered and issued a voucher you can view reports on the voucher that have been issued
+        @Html.ActionLink("View reports", "Index", "Reports")</p>
+    </li>
+</ol>

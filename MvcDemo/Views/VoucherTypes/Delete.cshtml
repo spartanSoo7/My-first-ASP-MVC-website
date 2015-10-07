@@ -1,0 +1,40 @@
+﻿@model MvcDemo.Models.VOUCHER_TYPE_TABLLE
+
+@{
+    ViewBag.Title = "Delete";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>VOUCHER_TYPE_TABLE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE_ID)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_TYPE_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_TYPE)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_SPECS)</td>
+        </tr>
+    </table>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,37 @@
+﻿@model MvcDemo.Models.VOUCHER_TYPE_TABLLE
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Details</h2>
+
+<fieldset>
+    <legend>VOUCHER_TYPE_TABLE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE_ID)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_TYPE_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_TYPE)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_SPECS)</td>
+        </tr>
+    </table>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VOUCHER_TYPE_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

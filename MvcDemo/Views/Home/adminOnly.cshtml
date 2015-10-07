@@ -1,0 +1,45 @@
+﻿@using MvcDemo.Models
+
+@{
+    PageData["Title"] = "Administrators only";
+}
+
+@if (Roles.IsUserInRole("admin"))
+{
+    <span> Welcome <b>@WebSecurity.CurrentUserName</b>! </span>
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("AdminError");
+}
+
+    <h2>Admin Page</h2>
+@if (TempData["notice"] != null)
+{
+    <h3 style="color: red;">@TempData["notice"]</h3>
+
+}
+<br />
+    <li>@Html.ActionLink("Register a new user", "Register", "Account")</li>
+    <li>@Html.ActionLink("View/ edit/ delete Users", "Index", "editUser")</li>
+    <li>@Html.ActionLink("Reset Password", "ForgotPassword", "Account")</li>
+<br />
+    <li>@Html.ActionLink("View/ edit/ delete main ethnicities", "Index", "Ethnicity")</li>
+    <li>@Html.ActionLink("View/ edit/ delete detailed ethnicities", "Index", "DetailedEthinicity")</li>
+<br />
+    <li>@Html.ActionLink("View/ edit/ delete Campuses", "Index", "Campus")</li>
+    <li>@Html.ActionLink("View/ edit/ delete Faculties", "Index", "Faculty")</li>
+    <li>@Html.ActionLink("View/ edit/ delete Courses", "Index", "Course")</li>
+    <li>@Html.ActionLink("View/ edit/ delete the linked Campuses, Faculties and Courses", "Index", "AvailCourses")</li>
+<br />
+    <li>@Html.ActionLink("View/ edit/ delete Voucher names", "Index", "VoucherTypes")</li>
+
+
+
+
+
+
+
+
+

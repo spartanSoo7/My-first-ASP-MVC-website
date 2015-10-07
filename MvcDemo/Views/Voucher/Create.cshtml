@@ -1,0 +1,114 @@
+﻿@model MvcDemo.Models.VOUCHER_TABLE
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VOUCHER_TABLE</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.REF_NUM)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.REF_NUM)
+            @Html.ValidationMessageFor(model => model.REF_NUM)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STUDENT_ID, "STUDENT")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("STUDENT_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.STUDENT_ID)
+        </div>
+        <input type="button" name="btnAjax" id="btnAjax" value="Show students names" />
+        <div id="products" style="background-color:lightskyblue"></div>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VOUCHER_TYPE_ID, "VOUCHER_TYPE_TABLE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VOUCHER_TYPE_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.VOUCHER_TYPE_ID)
+        </div>
+
+        <!--To add...
+            Depending on selection of voucher_type_id
+            Find the Voucher_specs column value based on the voucher_type_id
+
+            if voucher_spec == "advice"
+                show ADVICE_DESCR editor
+
+            else if voucher_spec == "funds"
+                show voucher_value editor
+
+            else
+                show all editors
+         -->
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.VOUCHER_VALUE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.VOUCHER_VALUE)
+                @Html.ValidationMessageFor(model => model.VOUCHER_VALUE)
+            </div>
+        
+           <div class="editor-label">
+              @Html.LabelFor(model => model.KOHA_FUNDS)
+           </div>
+           <div class="editor-field">
+            @Html.EditorFor(model => model.KOHA_FUNDS)
+            @Html.ValidationMessageFor(model => model.KOHA_FUNDS)
+          </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ADVICE_DESCR)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ADVICE_DESCR)
+                @Html.ValidationMessageFor(model => model.ADVICE_DESCR)
+            </div>
+
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $('#btnAjax').click(function () {
+        $.ajax({
+            url: '/Student/PartialStudents',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html'
+
+        })
+        .success(function (result) {
+            $('#products').html(result);
+        })
+        .error(function (xhr, status) {
+            alert(status);
+        })
+    });
+</script>
+
+}

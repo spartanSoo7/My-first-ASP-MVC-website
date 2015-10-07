@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0e1295a27524e31a1045f7c074ee9ea" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="Model.AVAILABLE_COURSE" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CAMPUS_TABLE" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COURSE_TABLE" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DETAILED_ETHINICITY_TABLE" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ETHINICITY_TABLE" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FACULTY_TABLE" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STUDENT" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="12" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VOUCHER_TABLE" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VOUCHER_TYPE_TABLLE" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.webpages_Membership" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.webpages_OAuthMembership" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.webpages_Roles" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="Model.AVAILABLE_COURSE_TABLE_STUDENTS_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CAMPUS_TABLE_AVALIABLE_COURSE_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.COURSE_TABLE_AVALIABLE_COURSE_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FACULTY_TABLE_AVAILIBLE_COURSE_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FACULTY_TABLE_COURSE_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.DETAILED_ETHINICITY_TABLE_STUDENTS_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ETHINICITY_TABLE_DETAILED_ETHINICITY_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ETHINICITY_TABLE_STUDENTS_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.STUDENTS_VOUCHER_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.VOUCHER_TYPE_TABLLE_VOUCHER_TABLE_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.webpages_UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

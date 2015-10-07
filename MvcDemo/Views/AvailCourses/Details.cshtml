@@ -1,0 +1,40 @@
+﻿@model MvcDemo.Models.AVAILABLE_COURSE
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AVAILABLE_COURSE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CAMPUS_TABLE.CAMPUS_NAME)</th>
+            <td>@Html.DisplayFor(model => model.CAMPUS_TABLE.CAMPUS_NAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FACULTY_TABLE.FACULTY_NAME)</th>
+            <td>@Html.DisplayFor(model => model.FACULTY_TABLE.FACULTY_NAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.COURSE_TABLE.COURSE_NAME)</th>
+            <td>@Html.DisplayFor(model => model.COURSE_TABLE.COURSE_NAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.AVAIL_COURSE_ID)</th>
+            <td>@Html.DisplayFor(model => model.AVAIL_COURSE_ID)</td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.AVAIL_COURSE_ID  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

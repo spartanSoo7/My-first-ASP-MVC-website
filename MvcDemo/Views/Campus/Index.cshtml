@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcDemo.Models.CAMPUS_TABLE>
+
+@{
+    ViewBag.Title = "Campus";
+}
+
+<h2>Campuses</h2>
+
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h3 style="color: red;">@TempData["notice"]</h3>
+
+<p>
+    @Html.ActionLink("Back", "adminOnly", "Home") |
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CAMPUS_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CAMPUS_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CAMPUS_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CAMPUS_NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.CAMPUS_ID  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.CAMPUS_ID }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.CAMPUS_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Reports";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<br />
+<li>@Html.ActionLink("Weekly Summary", "WeekSum")</li>
+<li>@Html.ActionLink("Monthly Grants Summary", "MonthSum" )</li>
+<li>@Html.ActionLink("Monthly Grants Summary by Grant Type", "MonthSumGrantType")</li>
+<li>@Html.ActionLink("Monthly Campus-Grants Summary", "MonthSumCampusGrant")</li>
+<li>@Html.ActionLink("Monthly Campus Grants Summary by Grant Type", "MonthSumCampusGrantType")</li>
+<li>@Html.ActionLink("Monthly Campus Summary", "MonthSumCampus")</li>
+<li>@Html.ActionLink("Monthly Faculty Grants Summary", "MonthSumFacultyGrant")</li>
+<li>@Html.ActionLink("Monthly Faculty Summary", "MonthSumFaculty")</li>
+<li>@Html.ActionLink("Year-to-date Summary", "YearlySum")</li>
+<li>@Html.ActionLink("Date Summary", "DaySum")</li>
+<li>@Html.ActionLink("View vouchers by age", "Age")</li>
+<li>@Html.ActionLink("View vouchers by gender", "Gender")</li>
+<li>@Html.ActionLink("View vouchers by ethinicity", "Ethinicity")</li>

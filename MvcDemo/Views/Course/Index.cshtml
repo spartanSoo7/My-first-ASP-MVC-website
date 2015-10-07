@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MvcDemo.Models.COURSE_TABLE>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>Courses</h2>
+
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h3 style="color: red;">@TempData["notice"]</h3>
+
+
+<p>
+    @Html.ActionLink("Back", "adminOnly", "Home") |
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.COURSE_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COURSE_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FACULTY_TABLE.FACULTY_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.COURSE_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COURSE_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FACULTY_TABLE.FACULTY_NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.COURSE_ID  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.COURSE_ID }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.COURSE_ID })
+        </td>
+    </tr>
+}
+
+</table>

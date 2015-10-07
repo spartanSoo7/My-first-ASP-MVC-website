@@ -1,0 +1,59 @@
+﻿@using MvcDemo.Models
+
+
+@{
+   // Layout = "~/_SiteLayout.cshtml";
+    PageData["Title"] = "Administrators only";
+}
+
+@if (Roles.IsUserInRole("admin"))
+{
+    <span> Welcome <b>@WebSecurity.CurrentUserName</b>! </span>
+}
+else
+{
+    //redirects to page "AdminError
+    Response.Redirect("AdminError");
+}
+
+    <h2>Admin Page</h2>
+    <br />
+    <li>@Html.ActionLink("Resgister a new user", "Register", "Account")</li>
+
+@if (TempData["notice"] != null)
+{
+    <h3 style="color: red;">@TempData["notice"]</h3>
+}
+
+<div id="floatingBox">
+    <h2>Users list</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user2 in Model)
+            {
+
+                <tr>
+                    <td>@user2.UserId</td>
+                    <td>@user2.UserName</td>
+                    <!--needs to send ID to change password field-->
+                    <td><input type="submit" value="Change password" /></td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+<div id="floatingBox">
+    
+</div>
+
+
+
+
+

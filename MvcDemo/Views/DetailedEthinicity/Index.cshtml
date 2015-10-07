@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MvcDemo.Models.DETAILED_ETHINICITY_TABLE>
+
+@{
+    ViewBag.Title = "Detailed Ethinicity";
+}
+
+<h2>Detailed Ethinicities</h2>
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h3 style="color: red;">@TempData["notice"]</h3>
+<p>
+    @Html.ActionLink("Back", "adminOnly", "Home") |
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DETAILED_ETHINICITY_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DETAILED_ETHINICITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ETHINICITY_TABLE.ETHINICITY)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DETAILED_ETHINICITY_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DETAILED_ETHINICITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ETHINICITY_TABLE.ETHINICITY)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DETAILED_ETHINICITY_ID  }) |
+            @Html.ActionLink("Details", "Details", new { id = item.DETAILED_ETHINICITY_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.DETAILED_ETHINICITY_ID })
+        </td>
+    </tr>
+}
+
+</table>

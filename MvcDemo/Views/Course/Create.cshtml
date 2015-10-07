@@ -1,0 +1,61 @@
+﻿@model MvcDemo.Models.COURSE_TABLE
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>COURSE_TABLE</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.COURSE_ID)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.COURSE_ID)
+            @Html.HiddenFor(model => model.COURSE_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COURSE_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COURSE_NAME)
+            @Html.ValidationMessageFor(model => model.COURSE_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FACULTY_ID, "FACULTY_TABLE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FACULTY_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.FACULTY_ID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

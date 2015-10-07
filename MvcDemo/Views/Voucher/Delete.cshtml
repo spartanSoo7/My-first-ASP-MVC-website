@@ -1,0 +1,49 @@
+﻿@model MvcDemo.Models.VOUCHER_TABLE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>VOUCHER_TABLE</legend>
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.REF_NUM)</th>
+            <td>@Html.DisplayFor(model => model.REF_NUM)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.STUDENT.STUDENT_FNAME)</th>
+            <td>@Html.DisplayFor(model => model.STUDENT.STUDENT_FNAME)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_TYPE_TABLLE.VOUCHER_TYPE)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_TYPE_TABLLE.VOUCHER_TYPE)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.VOUCHER_VALUE)</th>
+            <td>@Html.DisplayFor(model => model.VOUCHER_VALUE)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.KOHA_FUNDS)</th>
+            <td>@Html.DisplayFor(model => model.KOHA_FUNDS)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ADVICE_DESCR)</th>
+            <td>@Html.DisplayFor(model => model.ADVICE_DESCR)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DATE_OF_ISSUE)</th>
+            <td>@Html.DisplayFor(model => model.DATE_OF_ISSUE)</td>
+        </tr>
+    </table>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

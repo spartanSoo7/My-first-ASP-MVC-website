@@ -1,0 +1,59 @@
+﻿@model MvcDemo.Models.DETAILED_ETHINICITY_TABLE
+
+@{
+    ViewBag.Title = "Edit";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DETAILED_ETHINICITY_TABLE</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.DETAILED_ETHINICITY_ID)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.DETAILED_ETHINICITY_ID)
+            @Html.ValidationMessageFor(model => model.DETAILED_ETHINICITY_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DETAILED_ETHINICITY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DETAILED_ETHINICITY)
+            @Html.ValidationMessageFor(model => model.DETAILED_ETHINICITY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ETHINICITY_ID, "ETHINICITY_TABLE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ETHINICITY_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ETHINICITY_ID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

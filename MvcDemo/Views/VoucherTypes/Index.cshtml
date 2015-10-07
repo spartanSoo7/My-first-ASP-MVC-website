@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcDemo.Models.VOUCHER_TYPE_TABLLE>
+
+@{
+    ViewBag.Title = "Voucher Types";
+}
+
+<h2>Voucher Types</h2>
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+
+<h3 style="color: red;">@TempData["notice"]</h3>
+<p>
+    @Html.ActionLink("Back", "adminOnly", "Home") |
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VOUCHER_TYPE_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VOUCHER_TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VOUCHER_SPECS)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VOUCHER_TYPE_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VOUCHER_TYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VOUCHER_SPECS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.VOUCHER_TYPE_ID  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.VOUCHER_TYPE_ID  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.VOUCHER_TYPE_ID  })
+        </td>
+    </tr>
+}
+
+</table>

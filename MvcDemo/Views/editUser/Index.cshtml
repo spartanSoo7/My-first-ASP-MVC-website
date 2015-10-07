@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MvcDemo.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h3 style="color: red;">@TempData["notice"]</h3>
+<h3 style="color: red;">@TempData["noticeDel"]</h3>
+<p>
+    @Html.ActionLink("Back", "adminOnly", "Home")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>

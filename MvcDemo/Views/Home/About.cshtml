@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+
+            </p>
+        </div>
+    </section>
+}
+
+<style>
+    li{
+        padding-bottom: 10px;
+    }
+
+</style>
+<article>
+    <h3>Completely re-built and re-designed database</h3>
+    The tables are now:
+    <ul>
+        <li>AVAILABLE_COURSE</li>
+        <li>CAMPUS_TABLE</li>
+        <li>COURSE_TABLE</li>
+        <li>DETAILED_ETHINICITY_TABLE</li>
+        <li>ETHINICITY_TABLE</li>
+        <li>FACULTY_TABLE</li>
+        <li>STUDENTS</li>
+        <li>UserProfile</li>
+        <li>VOUCHER_TABLE</li>
+        <li>VOUCHER_TYPE_TABLE</li>
+        <li>webpages_Membership</li>
+        <li>webpages_OAuthMembership</li>
+        <li>webpages_Roles</li>
+        <li>webpages_UsersInRoles</li>
+    </ul>
+    With the new business rules:
+    <ul>
+        <li>Not all campuses offer the same faculties.</li> 
+        <li>Not all faculties (in each campus) offer the same courses. Campus 1 may offer course 1 and 2 but campus 2 may only offer course 1.</li>
+        <li>A course may only belong to one and only one faculty (uniqueness constraint on database).</li>
+        <li>A detailed ethnicity can belong to one and only one ethnicity (uniqueness constraint on database). </li>
+        <li>
+            The admin can change the name of the voucher types and add more types.
+            <ul>
+                <li>The vouchers now have a defined specification, so the user can decide what columns can be used depending on the "voucher type"<br />(The website itself is yet to be coded, to use this field)</li>
+            </ul>
+        </li>
+        <li>Campuses, faculties and courses can be changed, added and deleted.</li>
+        <li>The relationships between (/table handling the link between the tables), Campuses, faculties and courses, can be changed, added or deleted.</li>
+        <li>Ethnicities and detailed ethnicities can be changed, added or deleted.</li>
+        <li>If any of the fields change name (in the database) all the drop down lists change as well (as the drop down lists are built from the database).</li>
+        <li>If any of the fields change name (in the database) the related tables show the updated name e.g. if a student’s ethnicity is “Amirican” then the ethnicities name is then corrected to  “American” the student’s ethnicity is now “American”.</li>
+        <li>Users are now entered into the system with an email address (for the "forgot password" feature)</li>
+        <li>The table for user roles has been added, to allow for an administrator only section</li>
+        <li>The student page now has the option to select "other" as the gender, to allow for student who do not identify themselves as "male" or "female"</li>
+    </ul>
+    <p>This website has used the 'Database first' approach to create this MVC website</p>
+    <p>A "forgot password" feature has been added. This feature has the code to send the user a link to reset their password, to their email address in the database. Unfortunatly sending emails does not work on a localhost without extra plugins. So the link appears on the screen to test this feature. 
+    The admin can utilise this same feature to change the users password, by sending them the reset password link. Once the user has the reset link and the reset password token matches the database password token, the user is issued an random auto-generated password which they can change once they have logged in.</p>
+    <p>Jquery is use for the user to select a date from a calendar when entering or changing a students date of birth and when user selecting a date to view reports.</p>
+    <p>Ajax is used on the voucher page to show all the students names, from a partial view, when issuing the student a new voucher</p>
+    <p>User can search for students by first name, last name or their student ID, on the students page.</p>
+    <p>The user can see all voucher/grants issued to each student by clicking the "view vouchers" link. On "The Students Grants" page that comes up the user can edit, create, view details, or delete grants issued to the student</p>
+    <p>User can search for vouchers issued to students by the students first name, last name or their student ID, on the Voucher page. This page also allows the user to Add, View details, edit or delete grants.</p>
+    <p>The reports show appropriate alerts when: 
+        <ul>
+            <li>There is over 10 grants/ vouchers on a daily report</li>
+            <li>There is over 25 grants/ vouchers on a weekly report</li>
+            <li>There is over 50 grants/ vouchers on a monthly report</li>
+            <li>There is over 600 grants/ vouchers on the year report</li>
+            <li>There is over 50 grants/ vouchers on the report by age</li>
+            <li>There is over 50 grants/ vouchers on the report by gender</li>
+            <li>There is over 50 grants/ vouchers on the report by ethinicity</li>
+        </ul>
+    </p>
+</article>
+
+
+
+<aside>
+    <h3>Site Map</h3>
+    <p>Click to enlarge</p>
+    <script type="text/javascript">
+    function openImage(imageUrl) {
+        window.open("siteMap");
+    }
+    </script>
+
+    <a href="javascript:;" onclick="openImage('Site%20Map.jpg')">
+        <img src="~/Images/Site%20Map.jpg" width="150px" />
+    </a>
+
+</aside>

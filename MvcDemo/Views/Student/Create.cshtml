@@ -1,0 +1,162 @@
+﻿@model MvcDemo.Models.STUDENT
+
+@{
+    ViewBag.Title = "Create";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>STUDENT</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STUDENT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STUDENT_ID)
+            @Html.ValidationMessageFor(model => model.STUDENT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AVAIL_COURSE_ID, "AVAILABLE_COURSE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("AVAIL_COURSE_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.AVAIL_COURSE_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ETHINICITY_ID, "ETHINICITY_TABLE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ETHINICITY_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ETHINICITY_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DETAILED_ETHINICITY_ID, "DETAILED_ETHINICITY_TABLE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("DETAILED_ETHINICITY_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.DETAILED_ETHINICITY_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STUDENT_FNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STUDENT_FNAME)
+            @Html.ValidationMessageFor(model => model.STUDENT_FNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STUDENT_LNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STUDENT_LNAME)
+            @Html.ValidationMessageFor(model => model.STUDENT_LNAME)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GENDER)
+        </div>
+        <div class="editor-field">
+            <select style="border: 1px solid #e2e2e2; background: #fff; color: #333; font-size: 1.2em; margin: 5px 0 6px 0;  padding: 5px;  width: 300px;" @Html.EditorFor(model => model.GENDER)>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.GENDER)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DOB)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DOB, new { id = "datepicker", placeholder = "mm/dd/yyyy" })
+            @Html.ValidationMessageFor(model => model.DOB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ACCOMODATION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ACCOMODATION)
+            @Html.ValidationMessageFor(model => model.ACCOMODATION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PHONE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONE)
+            @Html.ValidationMessageFor(model => model.PHONE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MOBILE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MOBILE)
+            @Html.ValidationMessageFor(model => model.MOBILE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EMAIL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMAIL)
+            @Html.ValidationMessageFor(model => model.EMAIL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MARITAL_STATUS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MARITAL_STATUS)
+            @Html.ValidationMessageFor(model => model.MARITAL_STATUS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CONTACT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CONTACT)
+            @Html.ValidationMessageFor(model => model.CONTACT)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,42 @@
+﻿@model MvcDemo.Models.UserProfile
+
+@{
+    ViewBag.Title = "Delete";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Delete</h2>
+    <fieldset>
+        <legend>UserProfile</legend>
+        <table>
+            <tr>
+                <th colspan="2" style="padding-bottom: 20px;"><h3>Are you sure you want to delete this?<br /></h3></th>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                <td>@Html.DisplayFor(model => model.UserName)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.EmailId)</th>
+                <td>@Html.DisplayFor(model => model.EmailId)</td>
+            </tr>
+        </table>
+
+    </fieldset>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            @Html.ActionLink("Back to List", "Index") |
+            <input type="submit" value="Delete" />
+        </p>
+    }
+
+

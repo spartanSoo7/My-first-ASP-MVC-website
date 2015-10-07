@@ -1,0 +1,42 @@
+﻿@model MvcDemo.Models.DETAILED_ETHINICITY_TABLE
+
+@{
+    ViewBag.Title = "Delete";
+}
+@if (Roles.IsUserInRole("admin"))
+{
+}
+else
+{
+    //redirects to page "AdminError"
+    Response.Redirect("~/Home/AdminError");
+}
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?<br />This may effect other tables</h3>
+<fieldset>
+    <legend>DETAILED_ETHINICITY_TABLE</legend>
+
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DETAILED_ETHINICITY_ID)</th>
+            <td>@Html.DisplayFor(model => model.DETAILED_ETHINICITY_ID)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DETAILED_ETHINICITY)</th>
+            <td>@Html.DisplayFor(model => model.DETAILED_ETHINICITY)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ETHINICITY_TABLE.ETHINICITY)</th>
+            <td>@Html.DisplayFor(model => model.ETHINICITY_TABLE.ETHINICITY)</td>
+        </tr>
+    </table>
+
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
